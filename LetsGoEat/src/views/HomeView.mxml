@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Let's Go Eat">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		 
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayList;
+			
+			import scripts.*;
+			
+			
+			[Bindable]
+			private var place:String = "Please Click the Randomize Button";
+			
+			[Bindable]
+			private var scr:Script = App.getInstance().scr;
+			
+	
+			
+			protected function randomButton_clickHandler(event:MouseEvent):void
+			{
+				place = "You should go to: " + scr.randomize();
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:VGroup width="100%" height="100%" horizontalAlign="center">
+			<s:Label id="welcome" text="{place}" paddingTop="10" paddingBottom="5" paddingLeft="5" textAlign="center"/>
+			<s:Button id="randomButton" label="Randomize" click="randomButton_clickHandler(event)" width="470" height="520"/>
+			<s:Label id="tnx" text="Proudly made by: Ruy Ramos" paddingTop="5" paddingLeft="5" textAlign="center"/>
+	</s:VGroup>
+</s:View>

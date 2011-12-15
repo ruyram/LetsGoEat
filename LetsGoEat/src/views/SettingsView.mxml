@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Settings">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayList;
+			
+			import scripts.App;
+			import scripts.Script;
+	
+			[Bindable]
+			private var scr:Script = App.getInstance().scr;
+			
+			
+			protected function add_click(event:MouseEvent):void
+			{
+				scr.addPlace(placeName.text);
+				placeName.text = "";
+				
+			}
+			
+			protected function remove_click(event:MouseEvent):void
+			{
+				scr.delPlace(placeName.text);
+				placeName.text = "";
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:VGroup width="100%" height="100%" gap="5">	
+			<s:Label text="Add a resturants by typing in it's name in the input box and clicking the + button" fontSize="10" paddingTop="5" paddingLeft="5"/>
+			<s:Label text="Remove a resturants by typing in it's name in the input box and clicking the - button" fontSize="10" paddingTop="5" paddingLeft="5"/>		
+		<s:HGroup horizontalAlign="center" width="100%" gap="5" paddingLeft="5" paddingRight="5">
+			<s:Button id="remove" click="remove_click(event)" width="50" height="50" label="-"/>
+			<s:Button id="add" click="add_click(event)" width="50" height="50" label="+"/>
+			<s:TextInput id="placeName" width="360" height="50"/>
+		</s:HGroup>
+		<s:HGroup gap="5" paddingLeft="5" paddingRight="5">
+			<s:DropDownList dataProvider="{scr.places}" width="470" height="50"/>
+		</s:HGroup>
+	</s:VGroup>
+</s:View>
